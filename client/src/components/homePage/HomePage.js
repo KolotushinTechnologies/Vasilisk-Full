@@ -1,6 +1,15 @@
 // Import Engine
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { getSellersCards } from "../../actions/profile";
+import { newBasketProduct, newFavoritesProduct } from "../../actions/order";
+
+import Modal from "../Modal/Modal";
+
+import Register from "../auth/Register/Register";
+import Login from "../auth/Login/Login";
 
 import Carousel from "../Carousel/Carousel";
 
@@ -21,7 +30,22 @@ import "./HomePage.css";
 
 import data from "../../data/data.json";
 
-function HomePage() {
+function HomePage({
+  auth: { isAuthenticated, user },
+  getSellersCards,
+  newBasketProduct,
+  newFavoritesProduct,
+  profile: { profiles, loading },
+  order: { orders },
+  history
+}) {
+  const [modalActive, setModalActive] = useState(false);
+  const [loginStatus, setLoginStatus] = useState(false);
+
+  useEffect(() => {
+    getSellersCards();
+  }, [getSellersCards]);
+
   return (
     <Fragment>
       {/* <HomePageIntroBlock />
@@ -46,7 +70,7 @@ function HomePage() {
         {/* <div className="contr_slider">
         <div className="slider"> */}
         <Carousel>
-          {data.map((item) => {
+          {profiles.map((item) => {
             return (
               <div key={item._id} className="slider__item">
                 <ul className="  ">
@@ -54,7 +78,7 @@ function HomePage() {
                     <Link to="/">{/* <img src={ZmeiImage} /> */}</Link>
                   </li>
                   <li className="gogo11 flex33 ">
-                    <Link to="/">{item.title}</Link>
+                    <Link to={`/product/${item._id}`}>{item.name}</Link>
                   </li>
                   <li className="gogo11">
                     <div className="flex111">
@@ -63,16 +87,33 @@ function HomePage() {
                       </div>
                       <div className="flex222">
                         {" "}
-                        <button>
+                        <button
+                          onClick={() => {
+                            if (isAuthenticated) {
+                              newFavoritesProduct(item._id, history);
+                            } else {
+                              setModalActive(true);
+                            }
+                          }}
+                        >
                           {" "}
                           <img src={XoImage} />{" "}
                         </button>{" "}
                       </div>
                       <div>
                         {" "}
-                        <Link to="/">
+                        {}
+                        <button
+                          onClick={() => {
+                            if (isAuthenticated) {
+                              newBasketProduct(item._id, history);
+                            } else {
+                              setModalActive(true);
+                            }
+                          }}
+                        >
                           <img src={PlusImage} />
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   </li>
@@ -82,13 +123,47 @@ function HomePage() {
           })}
         </Carousel>
 
+        <Modal active={modalActive} setActive={setModalActive}>
+          {loginStatus === false ? (
+            <>
+              <Register closeModal={setModalActive} />
+              <div className="second-section__auth">
+                <p>
+                  Зарегистрированы?
+                  <button
+                    style={{ backgroundColor: "green" }}
+                    onClick={() => setLoginStatus(true)}
+                  >
+                    Вход
+                  </button>
+                </p>
+              </div>
+            </>
+          ) : (
+            <>
+              <Login closeModal={setModalActive} />
+              <div className="second-section__auth">
+                <p>
+                  Нет аккаунта?
+                  <button
+                    style={{ backgroundColor: "green" }}
+                    onClick={() => setLoginStatus(false)}
+                  >
+                    Регистрация
+                  </button>
+                </p>
+              </div>
+            </>
+          )}
+        </Modal>
+
         {/* </div>
       </div> */}
 
         <div className="zagolovok">Новинки</div>
 
         <Carousel>
-          {data.map((item) => {
+          {profiles.map((item) => {
             return (
               <div key={item._id} className="slider__item">
                 <ul className="  ">
@@ -96,7 +171,7 @@ function HomePage() {
                     <Link to="/">{/* <img src={ZmeiImage} /> */}</Link>
                   </li>
                   <li className="gogo11 flex33 ">
-                    <Link to="/">{item.title}</Link>
+                    <Link to="/">{item.name}</Link>
                   </li>
                   <li className="gogo11">
                     <div className="flex111">
@@ -112,9 +187,9 @@ function HomePage() {
                       </div>
                       <div>
                         {" "}
-                        <Link to="/">
+                        <button to="/">
                           <img src={PlusImage} />
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   </li>
@@ -128,4 +203,24 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+HomePage.propTypes = {
+  getSellersCards: PropTypes.func.isRequired,
+  newBasketProduct: PropTypes.func.isRequired,
+  newFavoritesProduct: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  order: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+  auth: state.auth,
+  order: state.order
+});
+
+export default connect(mapStateToProps, {
+  getSellersCards,
+  newBasketProduct,
+  newFavoritesProduct
+})(HomePage);

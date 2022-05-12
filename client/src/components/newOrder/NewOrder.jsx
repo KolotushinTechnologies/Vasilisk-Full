@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { newOrder } from "../../actions/order";
+import { newBasketProduct } from "../../actions/order";
 import { loadUser } from "../../actions/auth";
 
 // Import Components
@@ -105,7 +105,7 @@ const NewOrder = ({ auth: { user, loading }, loadUser, newOrder, history }) => {
 
 NewOrder.propTypes = {
   auth: PropTypes.object.isRequired,
-  newOrder: PropTypes.func.isRequired,
+  newBasketProduct: PropTypes.func.isRequired,
   loadUser: PropTypes.func.isRequired
 };
 
@@ -113,4 +113,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { loadUser, newOrder })(NewOrder);
+export default connect(mapStateToProps, { loadUser, newBasketProduct })(
+  NewOrder
+);

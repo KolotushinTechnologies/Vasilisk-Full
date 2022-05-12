@@ -33,13 +33,13 @@ const monthList = [
 ];
 
 const initialState = {
-  login: '',
-    fullName: '',
-    email: '',
-    phoneNumber: '',
-    address: '',
-    password: '',
-    password2: '',
+  login: "",
+  fullName: "",
+  email: "",
+  phoneNumber: "",
+  address: "",
+  password: "",
+  password2: "",
   avatar: ""
 };
 
@@ -87,9 +87,8 @@ const ProfileInfoSettings = ({
     }
   }, [loading, loadUser, user]);
 
-  const {
-    login, fullName, email, phoneNumber, address, password, avatar
-  } = formData;
+  const { login, fullName, email, phoneNumber, address, password, avatar } =
+    formData;
 
   const [avatarIsLoading, setAvatarLoading] = useState(false);
 
@@ -168,10 +167,13 @@ const ProfileInfoSettings = ({
                 type="text"
                 placeholder="Полное имя"
                 /* name="fullname" */
-                aria-invalid={!!errors.fullname + ""}
+                aria-invalid={!!errors.fullName + ""}
                 {...register("fullName", {
                   required: "Empty field",
-                  maxLength: { value: 30, message: "Максимальное количество символов: 30" },
+                  maxLength: {
+                    value: 30,
+                    message: "Максимальное количество символов: 30"
+                  },
                   minLength: 1,
                   pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
                   onChange: onChange
@@ -202,37 +204,62 @@ const ProfileInfoSettings = ({
               </button>
             </div>
           </div>
-          <span className="profileLogin">{login}</span>
+          {/* <span className="profileLogin">{login}</span> */}
+          <div className="nameAndRoleDiv">
+            {/* <span className="profileNameText">{fullname}</span> */}
+            <ErrorInput
+              className="profileNameText profInfoInput"
+              type="text"
+              placeholder="Логин"
+              /* name="fullname" */
+              aria-invalid={!!errors.login + ""}
+              {...register("login", {
+                required: "Empty field",
+                maxLength: {
+                  value: 30,
+                  message: "Максимальное количество символов: 30"
+                },
+                minLength: 1,
+                pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
+                onChange: onChange
+              })}
+              value={login}
+              errorstyle={{ marginTop: "-24px", marginLeft: "-6px" }}
+              error={errors.login}
+            />
+            {/* <span className="profileRoleText">
+                {iAmSeller === false ? "Buyer" : "Seller"}
+              </span> */}
+          </div>
           <div className="profileMoreInfo">
             <div className="profileMoreInfoDiv">
-              
               {/* <div
                 className={`profMoreInfoBlock profMoreInfoBlock2 profMobileHiddenBlock2`
                 }
                 isseller={iAmSeller + ""}
                 active={!mobileInfoHidden + ""}
               > */}
-                <span className="profInfoHeader">Ваш E-mail</span>
-                <ErrorInput
-                  className="profInfoInput"
-                  type="text"
-                  placeholder="Ваш Email"
-                  aria-invalid={!!errors.email + ""}
-                  {...register("email", {
-                    required: "Empty field",
-                    maxLength: {
-                      value: 320,
-                      message: "Максимальное количество символов у Email: 320"
-                    },
-                    minLength: 1,
-                    pattern:
-                      /^[a-z0-9\.\$\%\#\,\-\+\=\_\(\)\{\}\!\"\'\|\;\:\<\>]+@[a-z0-9]+\.[a-z0-9]+$/i,
-                    onChange: onChange
-                  })}
-                  value={email}
-                  error={errors.email}
-                />
-                {/* <div className="profEmailHowLogin">
+              <span className="profInfoHeader">Ваш E-mail</span>
+              <ErrorInput
+                className="profInfoInput"
+                type="text"
+                placeholder="Ваш Email"
+                aria-invalid={!!errors.email + ""}
+                {...register("email", {
+                  required: "Empty field",
+                  maxLength: {
+                    value: 320,
+                    message: "Максимальное количество символов у Email: 320"
+                  },
+                  minLength: 1,
+                  pattern:
+                    /^[a-z0-9\.\$\%\#\,\-\+\=\_\(\)\{\}\!\"\'\|\;\:\<\>]+@[a-z0-9]+\.[a-z0-9]+$/i,
+                  onChange: onChange
+                })}
+                value={email}
+                error={errors.email}
+              />
+              {/* <div className="profEmailHowLogin">
                   <input type="checkbox" />
                   <span>Use how login</span>
                 </div> */}
@@ -250,39 +277,51 @@ const ProfileInfoSettings = ({
                 isseller={iAmSeller + ""}
                 active={!mobileInfoHidden + ""}
               > */}
-                <span className="profInfoHeader">Ваш номер телефона</span>
-                <ErrorInput
-                  className="profInfoInput"
-                  type="text"
-                  placeholder="Ваш номер телефона"
-                  aria-invalid={!!errors.phoneNumber + ""}
-                  {...register("phoneNumber", {
-                    required: "Empty field",
-                    maxLength: { value: 12, message: "Количество символов должно быть 12" },
-                    minLength: { value: 12, message: "Количество символов должно быть 12" },
-                    pattern: /^\+[0-9]+$/i,
-                    onChange: onChange
-                  })}
-                  value={phoneNumber}
-                  error={errors.phoneNumber}
-                />
+              <span className="profInfoHeader">Ваш номер телефона</span>
+              <ErrorInput
+                className="profInfoInput"
+                type="text"
+                placeholder="Ваш номер телефона"
+                aria-invalid={!!errors.phoneNumber + ""}
+                {...register("phoneNumber", {
+                  required: "Empty field",
+                  maxLength: {
+                    value: 12,
+                    message: "Количество символов должно быть 12"
+                  },
+                  minLength: {
+                    value: 12,
+                    message: "Количество символов должно быть 12"
+                  },
+                  pattern: /^\+[0-9]+$/i,
+                  onChange: onChange
+                })}
+                value={phoneNumber}
+                error={errors.phoneNumber}
+              />
 
-                  <span className="profInfoHeader">Ваш адрес</span>
-                <ErrorInput
-                  className="profInfoInput"
-                  type="text"
-                  placeholder="Ваш адрес"
-                  aria-invalid={!!errors.address + ""}
-                  {...register("address", {
-                    required: "Empty field",
-                    maxLength: { value: 12, message: "Количество символов должно быть 12" },
-                    minLength: { value: 12, message: "Количество символов должно быть 12" },
-                   pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
-                    onChange: onChange
-                  })}
-                  value={address}
-                  error={errors.address}
-                />
+              <span className="profInfoHeader">Ваш адрес</span>
+              <ErrorInput
+                className="profInfoInput"
+                type="text"
+                placeholder="Ваш адрес"
+                aria-invalid={!!errors.address + ""}
+                {...register("address", {
+                  required: "Empty field",
+                  maxLength: {
+                    value: 12,
+                    message: "Количество символов должно быть 12"
+                  },
+                  minLength: {
+                    value: 12,
+                    message: "Количество символов должно быть 12"
+                  },
+                  pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
+                  onChange: onChange
+                })}
+                value={address}
+                error={errors.address}
+              />
               {/* </div> */}
               <button
                 type="submit"
@@ -299,9 +338,7 @@ const ProfileInfoSettings = ({
             >
               <span className="profInfoHeader">Пароль</span>
               <input className="passwordText" readOnly value="* * * * * * *" />
-              <button className="profChangePassButton">
-                Изменить пароль
-              </button>
+              <button className="profChangePassButton">Изменить пароль</button>
             </div>
           </div>
         </form>

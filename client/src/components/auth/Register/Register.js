@@ -153,7 +153,7 @@ const Register = ({ setAlert, register, closeModal, isAuthenticated }) => {
 
   const phoneField = (
     <div className="authField">
-      <span className="authFieldName">Введите номер телефона</span>
+      {/* <span className="authFieldName">Введите номер телефона</span> */}
       <div className="phoneFieldDiv">
         <input
           className="authFieldInput phoneMask"
@@ -190,19 +190,19 @@ const Register = ({ setAlert, register, closeModal, isAuthenticated }) => {
     </div>
   );
 
-  if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
-  }
+  // if (isAuthenticated) {
+  //   return <Redirect to="/dashboard" />;
+  // }
 
   return (
     <Fragment>
       <form className="authorizingBlock" onSubmit={handleSubmit(onSubmit)}>
         <div className="regLeftBlock">
           <div className="authField">
-            <span className="authFieldName">Придумайте логин</span>
-            <span className="authFieldSubName">
+            {/* <span className="authFieldName">Придумайте логин</span> */}
+            {/* <span className="authFieldSubName">
               Latin letters and numbers without spaces
-            </span>
+            </span> */}
             <ErrorInput
               className="authFieldInput"
               type="text"
@@ -222,7 +222,7 @@ const Register = ({ setAlert, register, closeModal, isAuthenticated }) => {
             />
           </div>
           <div className="authField">
-            <span className="authFieldName">Введите полное имя</span>
+            {/* <span className="authFieldName">Введите полное имя</span> */}
             <ErrorInput
               className="authFieldInput"
               type="text"
@@ -241,7 +241,7 @@ const Register = ({ setAlert, register, closeModal, isAuthenticated }) => {
             />
           </div>
           <div className="authField">
-            <span className="authFieldName">Введите свой Email</span>
+            {/* <span className="authFieldName">Введите свой Email</span> */}
             {/* <input className="authFieldInput" placeholder="Email"></input> */}
             <ErrorInput
               className="authFieldInput"
@@ -264,10 +264,10 @@ const Register = ({ setAlert, register, closeModal, isAuthenticated }) => {
 
           {phoneField}
           <div className="authField">
-            <span className="authFieldName">Придумайте пароль</span>
-            <span className="authFieldSubName">
+            {/* <span className="authFieldName">Придумайте пароль</span> */}
+            {/* <span className="authFieldSubName">
               Минимальный размер пароля: 6 символов
-            </span>
+            </span> */}
             <input
               className="authFieldInput"
               type={showPassword ? "text" : "password"}
@@ -295,7 +295,7 @@ const Register = ({ setAlert, register, closeModal, isAuthenticated }) => {
             />
           </div>
           <div className="authField">
-            <span className="authFieldName">Повторите пароль</span>
+            {/* <span className="authFieldName">Повторите пароль</span> */}
             <input
               className="authFieldInput"
               type={showPassword2 ? "text" : "password"}
@@ -322,7 +322,7 @@ const Register = ({ setAlert, register, closeModal, isAuthenticated }) => {
             />
           </div>
           <div className="authField">
-            <span className="authFieldName">Введите адрес</span>
+            {/* <span className="authFieldName">Введите адрес</span> */}
             <ErrorInput
               className="authFieldInput"
               type="text"

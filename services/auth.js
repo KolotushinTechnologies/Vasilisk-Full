@@ -23,7 +23,7 @@ const { validationResult } = require("express-validator");
 const getMyProfile = async (req, res) => {
   try {
     const user = await UserModel.findById(req.user.id)
-      // .populate("avatar")
+      .populate("avatar")
       .select("-password");
     res.json(user);
   } catch (err) {

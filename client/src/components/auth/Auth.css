@@ -17,9 +17,14 @@
 .authorizingBlock {
   display: flex;
   flex-direction: column;
-  background: #f3f5fb;
+  width: 50%;
+  /* background: #f3f5fb; */
   border-radius: 16px;
-  padding: 30px 40px 52px;
+  /* padding: 30px 40px 52px; */
+}
+
+.second-section__auth {
+  width: 50%;
 }
 
 /* .authField {
@@ -42,15 +47,30 @@
   margin-top: 4px;
 }
 
+.authField {
+  display: flex;
+  align-items: center;
+}
+
+.authField div {
+  display: flex;
+}
+
 .authFieldInput {
-  margin-top: 8px;
+  border-bottom: 2px solid green;
+  background: none;
+  color: #ffffff;
+      
+  
+  /* margin-top: 8px;
   box-sizing: border-box;
   background: #ffffff;
   border-radius: 16px;
   width: 353px;
   height: 32px;
   padding: 0 16px;
-  border-width: 0;
+  border-width: 0; */
+  padding: 0 16px;
   font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
@@ -83,7 +103,8 @@
 
 .submitButtonDiv > button {
   cursor: pointer;
-  background: #5282c3;
+  /* background: #5282c3; */
+  background: none;
   border-radius: 16px;
   border-width: 0;
   font-family: Montserrat;
@@ -92,7 +113,7 @@
   font-size: 14px;
   line-height: 24px;
   color: #ffffff;
-  width: 240px;
+  /* width: 240px; */
   height: 32px;
 }
 
@@ -140,12 +161,13 @@
 }
 
 .errorMessage {
-  position: absolute;
+  /* position: absolute; */
+  margin: 0 0 0 30px;
   font-size: 14px;
   line-height: 24px;
   color: #ff004d;
   text-align: end;
-  height: 0;
+  /* height: 0; */
 }
 
 *[aria-invalid="true"] {

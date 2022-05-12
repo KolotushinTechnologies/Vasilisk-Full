@@ -1,5 +1,5 @@
 // Import Models
-const SellerCardModel = require("../models/SellerCard");
+const SellerCardModel = require("../models/ProductCard");
 const OrderModel = require("../models/Order");
 
 // @route    GET api/order

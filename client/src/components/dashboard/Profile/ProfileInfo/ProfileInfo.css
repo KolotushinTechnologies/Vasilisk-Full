@@ -58,7 +58,7 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
-  color: #ffffff;
+  color: #0C0C0C;
 }
 
 .profInfoInput {
@@ -125,10 +125,11 @@
   cursor: pointer;
   box-sizing: border-box;
   margin-top: 24px;
-  min-width: 241px;
-  background: #5282c3;
+  /* min-width: 241px; */
+  background: none;
+  /* background: #5282c3; */
   border-radius: 16px;
-  font-family: Montserrat;
+  /* font-family: Montserrat; */
   font-style: normal;
   padding: 4px 16px;
   font-weight: 500;

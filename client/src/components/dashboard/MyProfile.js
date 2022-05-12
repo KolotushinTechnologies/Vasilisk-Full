@@ -13,6 +13,7 @@ import { logout } from "../../actions/auth";
 import OrderCard from "../orderCard/OrderCard";
 import CarpetCard from "../carpetCard/CarpetCard";
 import Profile from "./Profile/Profile";
+// import Carousel from
 
 // Import Styles
 import "./MyProfile.css";
@@ -69,15 +70,17 @@ const MyProfile = ({
       </div>
       <div className="profileOrdersDiv">
         {orders
-          ? orders.map((order) => (
+          ? orders.map((product) => (
               <OrderCard
-                iAmSeller={user && user.iAmSeller}
-                myName={user && user.fullname}
-                key={order._id}
-                isSent
-                img=""
-                sellerName={order.seller.fullname}
-                nameBuyer={order.buyer.fullname}
+                nameProduct={product.productCard.name}
+                priceProduct={product.productCard.price}
+                // iAmSeller={user && user.iAmSeller}
+                // myName={user && user.fullname}
+                // key={order._id}
+                // isSent
+                // img=""
+                // sellerName={order.seller.fullname}
+                // nameBuyer={order.buyer.fullname}
               />
             ))
           : "Orders Not Found!"}

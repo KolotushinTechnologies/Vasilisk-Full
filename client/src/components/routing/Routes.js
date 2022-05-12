@@ -15,6 +15,7 @@ import Chats from "../chats/Chats";
 import Orders from "../orders/Orders";
 import NewOrder from "../newOrder/NewOrder";
 import Auth from "../auth/Auth";
+import ProductPage from "../ProductPage/ProductPage";
 
 const Routes = () => {
   return (
@@ -29,6 +30,7 @@ const Routes = () => {
         <Route exact path="/how-it-works" component={HowItWorksPage} />
         <Route exact path="/sellers" component={Sellers} />
         <Route exact path="/company/:id" component={Company} />
+        <Route exact path="/product/:id" component={ProductPage} />
         <Route exact path="/support" component={Support} />
         <PrivateRoute exact path="/chats" component={Chats} />
         <PrivateRoute exact path="/orders" component={Orders} />

@@ -1,6 +1,7 @@
 .modal {
     height: 100vh;
     width: 100vw;
+    z-index: 1;
     background-color: rgba(0, 0, 0, 0.4);
     position: fixed;
     top: 0;
@@ -19,12 +20,14 @@
 }
 
 .modal__content {
+    display: flex;
     padding: 20px;
     border-radius: 12px;
     background-color: #0C0C0C;
     transform: scale(0.5);
     transition: 0.4s all;
-    width: 50vw;
+    /* width: 50vw; */
+    width: 800px;
     color: #000000;
 }
 

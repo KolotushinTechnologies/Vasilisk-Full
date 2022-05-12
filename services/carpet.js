@@ -2,7 +2,7 @@
 
 // Import Models
 const CarpetModel = require("../models/Carpet");
-const SellerCardModel = require("../models/SellerCard");
+const SellerCardModel = require("../models/ProductCard");
 
 // @route    GET api/carpets
 // @desc     Get all carpets

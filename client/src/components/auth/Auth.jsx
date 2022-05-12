@@ -7,8 +7,6 @@ import AuthIllustration from "../../img1/illustration.png";
 
 import Register from "./Register/Register";
 import Login from "./Login/Login";
-import PasswordRecovery from "./PasswordRecovery/PasswordRecovery";
-import NewPassword from "./NewPassword/NewPassword";
 
 const Auth = () => {
   return (
@@ -18,8 +16,6 @@ const Auth = () => {
         <Switch>
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/password-recovery" component={PasswordRecovery} />
-          <Route exact path="/new-password" component={NewPassword} />
         </Switch>
       </div>
     </Fragment>

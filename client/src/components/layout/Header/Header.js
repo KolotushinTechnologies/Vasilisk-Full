@@ -118,28 +118,32 @@ const Header = ({ auth: { isAuthenticated, user }, logout }) => {
               {loginStatus === false ? (
                 <>
                   <Register closeModal={setModalActive} />
-                  <p>
-                    Зарегистрированы?
-                    <button
-                      style={{ backgroundColor: "green" }}
-                      onClick={() => setLoginStatus(true)}
-                    >
-                      Вход
-                    </button>
-                  </p>
+                  <div className="second-section__auth">
+                    <p>
+                      Зарегистрированы?
+                      <button
+                        style={{ backgroundColor: "green" }}
+                        onClick={() => setLoginStatus(true)}
+                      >
+                        Вход
+                      </button>
+                    </p>
+                  </div>
                 </>
               ) : (
                 <>
                   <Login closeModal={setModalActive} />
-                  <p>
-                    Нет аккаунта?
-                    <button
-                      style={{ backgroundColor: "green" }}
-                      onClick={() => setLoginStatus(false)}
-                    >
-                      Регистрация
-                    </button>
-                  </p>
+                  <div className="second-section__auth">
+                    <p>
+                      Нет аккаунта?
+                      <button
+                        style={{ backgroundColor: "green" }}
+                        onClick={() => setLoginStatus(false)}
+                      >
+                        Регистрация
+                      </button>
+                    </p>
+                  </div>
                 </>
               )}
             </Modal>

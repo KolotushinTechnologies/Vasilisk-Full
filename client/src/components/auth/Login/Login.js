@@ -45,15 +45,15 @@ const Login = ({ loginAuth, closeModal, isAuthenticated }) => {
     closeModal(false);
   };
 
-  if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
-  }
+  // if (isAuthenticated) {
+  //   return <Redirect to="/dashboard" />;
+  // }
 
   return (
     <Fragment>
       <form className="authorizingBlock" onSubmit={handleSubmit(onSubmit)}>
         <div className="authField">
-          <span className="authFieldName">Введите свой логин</span>
+          {/* <span className="authFieldName">Введите свой логин</span> */}
           {/* <input
             className="authFieldInput"
             placeholder="Email or Login"
@@ -77,7 +77,7 @@ const Login = ({ loginAuth, closeModal, isAuthenticated }) => {
           />
         </div>
         <div className="authField">
-          <span className="authFieldName">Введите пароль</span>
+          {/* <span className="authFieldName">Введите пароль</span> */}
           {/* <input className="authFieldInput" placeholder=" Password"></input> */}
           <ErrorInput
             className="authFieldInput"
@@ -90,30 +90,13 @@ const Login = ({ loginAuth, closeModal, isAuthenticated }) => {
             onChange={onChange}
             error={errors.password}
           />
-          <div className="loginLastField">
-            <Link to="password-recovery" className="forgotPassword">
-              Forgot your Password?
-            </Link>
-          </div>
         </div>
         <div className="submitButtonDiv">
           <button className="submitButton" type="submit">
-            Go
+            Вход
           </button>
         </div>
       </form>
-      <div className="loginLinksDiv">
-        <div className="loginLinksBlock1">
-          <div className="loginLinksLine"></div>
-          <span className="loginLinksHeader">Or</span>
-          <div className="loginLinksLine"></div>
-        </div>
-        <div className="loginLinksBlock2">
-          <a className="loginLink"></a>
-          <a className="loginLink"></a>
-          <a className="loginLink"></a>
-        </div>
-      </div>
     </Fragment>
   );
 };

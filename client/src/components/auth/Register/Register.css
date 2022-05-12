@@ -108,7 +108,7 @@
 
 .phoneNum {
   margin-top: 0;
-  width: 100%;
+  /* width: 100%; */
   margin-left: 8px;
 }
 
@@ -156,13 +156,15 @@
 }
 
 .regLeftBlock > .authField:nth-child(4) {
-  margin-top: 48px;
+  /* margin-top: 48px; */
+  display: flex;
+  text-align: center;
 }
 
-.regLeftBlock > .authField:nth-child(5) {
+/* .regLeftBlock > .authField:nth-child(5) {
   margin-top: 48px;
   margin-bottom: 32px;
-}
+} */
 
 .regLeftBlock[iAmSeller="true"] > .authField:nth-child(1) {
   margin-top: 16px;
