@@ -9,8 +9,7 @@ import { getMyCarpets } from "../../actions/carpet";
 import { logout } from "../../actions/auth";
 
 // Import Components
-import BackButton from "../backButton/BackButton";
-import ChatsButton from "../chatsButton/ChatsButton";
+// import BackButton from "../backButton/BackButton";
 import OrderCard from "../orderCard/OrderCard";
 import CarpetCard from "../carpetCard/CarpetCard";
 import Profile from "./Profile/Profile";
@@ -42,32 +41,30 @@ const MyProfile = ({
 
   return (
     <Fragment>
-      <div className="contentHeaderButtonsDiv">
-        <BackButton />
-        <ChatsButton />
-      </div>
-      <span className="profileHeader profileAboutMeText">About me</span>
+      {/* <div className="contentHeaderButtonsDiv"></div>
+      <span className="profileHeader profileAboutMeText">Личный кабинет</span> */}
       <Profile
         avatar={user && user.avatar}
-        fullname={user && user.fullname}
+        fullName={user && user.fullName}
         login={user && user.login}
-        birthDay={user && user.birthDay}
+        address={user && user.address}
+        // birthDay={user && user.birthDay}
         email={user && user.email}
-        location={user && user.location}
+        // location={user && user.location}
         phoneNumber={user && user.phoneNumber}
-        iAmSeller={user && user.iAmSeller}
+        // iAmSeller={user && user.iAmSeller}
         user={user && user}
-        profileCompanyName={profile && profile.companyName}
-        profileEmailOne={profile && profile.emailOne}
-        profilePhoneNumberOne={profile && profile.phoneNumberOne}
+        // profileCompanyName={profile && profile.companyName}
+        // profileEmailOne={profile && profile.emailOne}
+        // profilePhoneNumberOne={profile && profile.phoneNumberOne}
         logout={logout}
       />
       <div className="profileHeaderDiv">
         <span className="profOrdersText">
-          My orders({orders && orders.length})
+          Избранное({orders && orders.length})
         </span>
         <Link className="profOrdersLink" to="/orders">
-          View all
+          Смотреть все
         </Link>
       </div>
       <div className="profileOrdersDiv">

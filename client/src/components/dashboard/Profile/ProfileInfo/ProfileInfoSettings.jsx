@@ -40,14 +40,6 @@ const initialState = {
     address: '',
     password: '',
     password2: '',
-  // fullname: "",
-  // birthDay: "1",
-  // birthMonth: "1",
-  // birthYear: "2021",
-  // email: "",
-  // location: "",
-  // phoneNumber: "",
-  // login: "",
   avatar: ""
 };
 
@@ -61,7 +53,8 @@ const ProfileInfoSettings = ({
   logout,
   iAmSeller,
   openProfileSettings,
-  displayEditProfile
+  displayEditProfile,
+  closeSettings
 }) => {
   const [formData, setFormData] = useState(initialState);
 
@@ -95,7 +88,7 @@ const ProfileInfoSettings = ({
   }, [loading, loadUser, user]);
 
   const {
-    login, fullName, email, phoneNumber, address, password
+    login, fullName, email, phoneNumber, address, password, avatar
   } = formData;
 
   const [avatarIsLoading, setAvatarLoading] = useState(false);
@@ -109,6 +102,7 @@ const ProfileInfoSettings = ({
     console.log(formData);
     console.log(editUserProfile);
     if (isDirty) editUserProfile(formData);
+    closeSettings(false);
   };
 
   const onSubmitFile = async (e) => {
@@ -134,14 +128,14 @@ const ProfileInfoSettings = ({
           encType="multipart/form-data"
         >
           {!avatarIsLoading && (
-            <div className="donloadImgBg">Click for download image</div>
+            <div className="donloadImgBg">Нажмите для загрузки аватара</div>
           )}
           {avatarIsLoading ? (
             <Spinner />
           ) : avatar && avatar?.url ? (
-            <img className="profileImage" src={avatar?.url} alt="No Photo" />
+            <img className="profileImage" src={avatar?.url} alt="Нет Фото" />
           ) : (
-            <img className="profileImage" src={DefaultAvatar} alt="No Photo" />
+            <img className="profileImage" src={DefaultAvatar} alt="Нет Фото" />
           )}
           <input
             type="file"
@@ -172,25 +166,25 @@ const ProfileInfoSettings = ({
               <ErrorInput
                 className="profileNameText profInfoInput"
                 type="text"
-                placeholder="Name"
+                placeholder="Полное имя"
                 /* name="fullname" */
                 aria-invalid={!!errors.fullname + ""}
-                {...register("fullname", {
+                {...register("fullName", {
                   required: "Empty field",
-                  maxLength: { value: 30, message: "Length more than 30" },
+                  maxLength: { value: 30, message: "Максимальное количество символов: 30" },
                   minLength: 1,
                   pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
                   onChange: onChange
                 })}
-                value={fullname}
-                errorStyle={{ marginTop: "-24px", marginLeft: "-6px" }}
-                error={errors.fullname}
+                value={fullName}
+                errorstyle={{ marginTop: "-24px", marginLeft: "-6px" }}
+                error={errors.fullName}
               />
-              <span className="profileRoleText">
+              {/* <span className="profileRoleText">
                 {iAmSeller === false ? "Buyer" : "Seller"}
-              </span>
+              </span> */}
             </div>
-            <span
+            {/* <span
               className="moreDetailsText"
               active={!mobileInfoHidden + ""}
               onClick={() => setMobileInfoHidden(!mobileInfoHidden)}
@@ -198,98 +192,37 @@ const ProfileInfoSettings = ({
             >
               More details
               <img src={ButtonBackArrow} />
-            </span>
+            </span> */}
             <div className="editExitButtonsDiv">
               <button onClick={openProfileSettings} className="editButton">
-                {displayEditProfile ? "Cancel" : "Edit"}
+                {displayEditProfile ? "Отмена" : "Редактировать"}
               </button>
               <button onClick={logout} className="exitButton">
-                Exit
+                Выход
               </button>
             </div>
           </div>
           <span className="profileLogin">{login}</span>
-          <div className="profileMoreInfo" isseller={iAmSeller + ""}>
+          <div className="profileMoreInfo">
             <div className="profileMoreInfoDiv">
-              {!iAmSeller && (
-                <div className="profMoreInfoBlock">
-                  <span className="profInfoHeader">Birthday</span>
-                  <div
-                    className="profBirthDiv" /* aria-invalid={(currentYear - birthYear < 18 && (submitCount > 0 || dateDivTouched)) + ""} */ /* onClick={() => setDateTouched(true)} */
-                  >
-                    <select
-                      name="birthDay"
-                      className="profBirthSelect authFieldSelect birthdaySelect birthdaySelectDay"
-                      value={birthDay}
-                      onChange={onChange}
-                    >
-                      {[
-                        ...(function* () {
-                          for (
-                            var k = 1;
-                            k <= new Date(birthYear, birthMonth, 0).getDate();
-                            k++
-                          ) {
-                            yield <option key={k}>{k}</option>;
-                          }
-                        })()
-                      ]}
-                    </select>
-                    <select
-                      name="birthMonth"
-                      className="profBirthSelect authFieldSelect birthdaySelect birthdaySelectMonth"
-                      value={birthMonth}
-                      onChange={onChange}
-                    >
-                      {monthList.map((value, index) => (
-                        <option value={index + 1} key={index}>
-                          {value}
-                        </option>
-                      ))}
-                    </select>
-                    <select
-                      name="birthYear"
-                      className="profBirthSelect authFieldSelect birthdaySelect birthdaySelectYear"
-                      value={birthYear}
-                      onChange={onChange}
-                    >
-                      {[
-                        ...(function* () {
-                          for (
-                            var k = new Date().getFullYear();
-                            k >= 1920;
-                            k--
-                          ) {
-                            yield <option key={k}>{k}</option>;
-                          }
-                        })()
-                      ]}
-                    </select>
-                  </div>
-                </div>
-              )}
-              <div
-                className={`profMoreInfoBlock ${
-                  !iAmSeller && "profMoreInfoBlock2"
-                } ${
-                  iAmSeller
-                    ? "profMobileHiddenBlock1"
-                    : "profMobileHiddenBlock2"
-                }`}
+              
+              {/* <div
+                className={`profMoreInfoBlock profMoreInfoBlock2 profMobileHiddenBlock2`
+                }
                 isseller={iAmSeller + ""}
                 active={!mobileInfoHidden + ""}
-              >
-                <span className="profInfoHeader">E-mail</span>
+              > */}
+                <span className="profInfoHeader">Ваш E-mail</span>
                 <ErrorInput
                   className="profInfoInput"
                   type="text"
-                  placeholder="Email"
+                  placeholder="Ваш Email"
                   aria-invalid={!!errors.email + ""}
                   {...register("email", {
                     required: "Empty field",
                     maxLength: {
                       value: 320,
-                      message: "Email greater than 320"
+                      message: "Максимальное количество символов у Email: 320"
                     },
                     minLength: 1,
                     pattern:
@@ -299,34 +232,14 @@ const ProfileInfoSettings = ({
                   value={email}
                   error={errors.email}
                 />
-                <div className="profEmailHowLogin">
+                {/* <div className="profEmailHowLogin">
                   <input type="checkbox" />
                   <span>Use how login</span>
-                </div>
-              </div>
+                </div> */}
+              {/* </div> */}
             </div>
-            <div className="profileMoreInfoDiv" isseller={iAmSeller + ""}>
-              {!iAmSeller && (
-                <div className="profMoreInfoBlock">
-                  <span className="profInfoHeader">Country</span>
-                  <ErrorInput
-                    className="profInfoInput"
-                    type="text"
-                    placeholder="Sity & Country"
-                    aria-invalid={!!errors.location + ""}
-                    {...register("location", {
-                      required: "Empty field",
-                      maxLength: 30,
-                      minLength: 1,
-                      pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
-                      onChange: onChange
-                    })}
-                    value={location}
-                    error={errors.location}
-                  />
-                </div>
-              )}
-              <div
+            <div className="profileMoreInfoDiv">
+              {/* <div
                 className={`profMoreInfoBlock ${
                   !iAmSeller && "profMoreInfoBlock2"
                 } ${
@@ -336,42 +249,58 @@ const ProfileInfoSettings = ({
                 }`}
                 isseller={iAmSeller + ""}
                 active={!mobileInfoHidden + ""}
-              >
-                <span className="profInfoHeader">Mobile number</span>
+              > */}
+                <span className="profInfoHeader">Ваш номер телефона</span>
                 <ErrorInput
                   className="profInfoInput"
                   type="text"
-                  placeholder=""
+                  placeholder="Ваш номер телефона"
                   aria-invalid={!!errors.phoneNumber + ""}
                   {...register("phoneNumber", {
                     required: "Empty field",
-                    maxLength: { value: 12, message: "Length is not 12" },
-                    minLength: { value: 12, message: "Length is not 12" },
+                    maxLength: { value: 12, message: "Количество символов должно быть 12" },
+                    minLength: { value: 12, message: "Количество символов должно быть 12" },
                     pattern: /^\+[0-9]+$/i,
                     onChange: onChange
                   })}
                   value={phoneNumber}
                   error={errors.phoneNumber}
                 />
-              </div>
+
+                  <span className="profInfoHeader">Ваш адрес</span>
+                <ErrorInput
+                  className="profInfoInput"
+                  type="text"
+                  placeholder="Ваш адрес"
+                  aria-invalid={!!errors.address + ""}
+                  {...register("address", {
+                    required: "Empty field",
+                    maxLength: { value: 12, message: "Количество символов должно быть 12" },
+                    minLength: { value: 12, message: "Количество символов должно быть 12" },
+                   pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
+                    onChange: onChange
+                  })}
+                  value={address}
+                  error={errors.address}
+                />
+              {/* </div> */}
               <button
                 type="submit"
                 className="submitButton profileChangeButton"
                 active={!mobileInfoHidden + ""}
-                isseller={iAmSeller + ""}
               >
-                Change Settings
+                Изменить настройки
               </button>
             </div>
             <div
               className="profileMoreInfoDiv passwordContentDiv"
-              isseller={iAmSeller + ""}
-              active={!mobileInfoHidden + ""}
+              // isseller={iAmSeller + ""}
+              // active={!mobileInfoHidden + ""}
             >
-              <span className="profInfoHeader">Password</span>
+              <span className="profInfoHeader">Пароль</span>
               <input className="passwordText" readOnly value="* * * * * * *" />
               <button className="profChangePassButton">
-                Change your Password
+                Изменить пароль
               </button>
             </div>
           </div>

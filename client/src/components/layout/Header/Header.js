@@ -27,7 +27,7 @@ const Header = ({ auth: { isAuthenticated, user }, logout }) => {
   return (
     <header className={mainHeader ? "header" : "header_no_cover"}>
       <div className="cover1">
-        <div className="contr1200">
+        <div className={mainHeader ? "contr1200" : "contr1111"}>
           <nav className="nav">
             <span className="logo">
               {" "}

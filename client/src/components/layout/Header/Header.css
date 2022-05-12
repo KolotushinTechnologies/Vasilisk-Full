@@ -2,6 +2,7 @@
   overflow: hidden;
   position: relative;
   width: 100%;
+  min-height: 1000px;
 
   background-color: #0c0c0c;
   background-image: url('../../../img/bg3.png');
@@ -59,6 +60,13 @@
 
     background-repeat: no-repeat;
   }
+}
+
+.contr1111 {
+  max-width: 1560px;
+    margin: 0px auto;
+    padding: 18px 15px;
+    box-sizing: content-box;
 }
 
 .contr1200 {

@@ -15,14 +15,15 @@ import "./Profile.css";
 
 const Profile = ({
   avatar,
-  fullname,
+  fullName,
   login,
-  birthDay,
+  // birthDay,
   email,
-  location,
+  // location,
   phoneNumber,
-  iAmSeller,
+  // iAmSeller,
   user,
+  address,
   profileCompanyName,
   profileEmailOne,
   profilePhoneNumberOne,
@@ -50,9 +51,10 @@ const Profile = ({
       setMobileInfoHidden={setMobileInfoHidden}
       mobileInfoHidden={mobileInfoHidden} 
       logout={logout}
-      iAmSeller={iAmSeller}
+      // iAmSeller={iAmSeller}
       openProfileSettings={openProfileSettings}
       displayEditProfile={displayEditProfile}
+      closeSettings={toggleEditProfile}
     />
   );
 
@@ -63,82 +65,36 @@ const Profile = ({
   const myProfile = (
     <ProfileInfo
       avatar={avatar}
-      fullname={fullname}
-      iAmSeller={iAmSeller}
+      fullName={fullName}
+      // iAmSeller={iAmSeller}
       openProfileSettings={openProfileSettings}
       displayEditProfile={displayEditProfile}
       setMobileInfoHidden={setMobileInfoHidden}
       mobileInfoHidden={mobileInfoHidden}
       logout={logout}
       login={login}
-      birthDay={birthDay}
+      // birthDay={birthDay}
       email={email}
-      location={location}
+      // location={location}
+      address={address}
       phoneNumber={phoneNumber}
     />
   );
 
-  const infoCompany = (
-    <CompanyInfo
-      companyName={profileCompanyName}
-      location={location}
-      emailOne={profileEmailOne}
-      phoneNumberOne={profilePhoneNumberOne}
-      mobileInfoHidden={mobileInfoHidden}
-    />
-  );
+  // const infoCompany = (
+  //   <CompanyInfo
+  //     companyName={profileCompanyName}
+  //     // location={location}
+  //     emailOne={profileEmailOne}
+  //     phoneNumberOne={profilePhoneNumberOne}
+  //     mobileInfoHidden={mobileInfoHidden}
+  //   />
+  // );
 
   return (
     <Fragment>
       {displayEditProfile ? editProfile : myProfile}
-      {iAmSeller && (
-        <div className="companyProfile" active={!mobileInfoHidden + ""}>
-          <img className="profileImage" src="" />
-          <div className="profileInfoContent">
-            <div className="nameAndButtonsDiv">
-              <div className="nameAndRoleDiv">
-                <span className="profileNameText">{profileCompanyName}</span>
-                <span className="profileRoleText">
-                  {/* {profile.iAmSeller && "Company"} */}
-                </span>
-              </div>
-              <span
-                className="moreDetailsText"
-                active={!mobileInfoHidden + ""}
-                onClick={() => setMobileInfoHidden(!mobileInfoHidden)}
-              >
-                More details
-                <img src={ButtonBackArrow} />
-              </span>
-              <div className="editExitButtonsDiv">
-                <button onClick={openCompanySettings} className="editButton">
-                  {displayEditCompanyInfo ? "Cancel" : "Edit"}
-                </button>
-                <button onClick={logout} className="exitButton">
-                  Exit
-                </button>
-              </div>
-            </div>
-            {/* <span className="profileLogin">{login}</span> */}
-            {displayEditCompanyInfo ? editCompanyInfo : infoCompany}
-          </div>
-        </div>
-      )}
-      {iAmSeller && (
-        <div>
-          <button
-            onClick={openWhatMakeSettings}
-            className="editButton whatWeMakeEditButton"
-          >
-            {displayEditWhatMake ? "Cancel" : "Edit"}
-          </button>
-          {displayEditWhatMake ? (
-            <CompanyWhatMakeSettings data={{ country: location }} />
-          ) : (
-            <CompanyWhatMake data={{ country: location }} />
-          )}
-        </div>
-      )}
+      
     </Fragment>
   );
 };

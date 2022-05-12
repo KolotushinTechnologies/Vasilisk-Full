@@ -28,11 +28,11 @@
 }
 
 body {
-  font-family: "Raleway", sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  background-color: #fff;
-  color: #333;
+  height: 100%;
+  margin: 0;
+  background-color: #0c0c0c;
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: #ffffff;
 }
 
 a {
@@ -52,6 +52,7 @@ img {
 .container {
   margin: 0;
   overflow: hidden;
+  background-color: #0C0C0C;
   /* padding: 0 2rem; */
   /* margin-top: 6rem; */
   /* margin-bottom: 3rem; */

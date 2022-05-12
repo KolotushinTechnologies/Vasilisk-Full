@@ -1,0 +1,38 @@
+[
+  {
+    "_id": 1,
+    "title": "Slide 1",
+    "price": "1200",
+    "color": "#aac3bf"
+  },
+  {
+    "_id": 2,
+    "title": "Slide 2",
+    "price": "1200",
+    "color": "#c9b1bd"
+  },
+  {
+    "_id": 3,
+    "title": "Slide 3",
+    "price": "1200",
+    "color": "#d5a29c"
+  },
+  {
+    "_id": 4,
+    "title": "Slide 4",
+    "price": "1200",
+    "color": "#82a7a6"
+  },
+  {
+    "_id": 5,
+    "title": "Slide 5",
+    "price": "1200",
+    "color": "#e6af7a"
+  },
+  {
+    "_id": 6,
+    "title": "Slide 6",
+    "price": "1200",
+    "color": "#95be9e"
+  }
+]

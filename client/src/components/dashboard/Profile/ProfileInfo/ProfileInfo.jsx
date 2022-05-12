@@ -6,98 +6,103 @@ import DefaultAvatar from "../../../../img11/depositphotos_318221368-stock-illus
 
 const ProfileInfo = ({
   avatar,
-  fullname,
-  iAmSeller,
+  fullName,
+  // iAmSeller,
   openProfileSettings,
   displayEditProfile,
   logout,
   setMobileInfoHidden,
   mobileInfoHidden = true,
   login,
-  birthDay,
+  // birthDay,
   email,
-  location,
+  address,
+  // location,
   phoneNumber
 }) => {
   return (
     <div className="profileInfo" active={!mobileInfoHidden + ""}>
       {avatar ? (
-        <img className="profileImage" src={avatar?.url} alt="No Photo" />
+        <img className="profileImage" src={avatar?.url} alt="Нет Фото" />
       ) : (
         <img
           className="profileImage"
           src={DefaultAvatar}
-          alt="No Photo"
+          alt="Нет Фото"
         />
       )}
       <div className="profileInfoContent">
         <div className="nameAndButtonsDiv">
           <div className="nameAndRoleDiv">
-            <span className="profileNameText">{fullname}</span>
-            <span className="profileRoleText">
-              {iAmSeller === false ? "Buyer" : "Seller"}
-            </span>
+            <span className="profileNameText">{fullName}</span>
           </div>
           <span
             className="moreDetailsText"
             active={!mobileInfoHidden + ""}
             onClick={() => setMobileInfoHidden(!mobileInfoHidden)}
-            isseller={iAmSeller + ""}
+            // isseller={iAmSeller + ""}
           >
             More details
             <img src={ButtonBackArrow} />
           </span>
           <div className="editExitButtonsDiv">
             <button onClick={openProfileSettings} className="editButton">
-              {displayEditProfile ? "Cancel" : "Edit"}
+              {displayEditProfile ? "Отмена" : "Редактировать"}
             </button>
             <button onClick={logout} className="exitButton">
-              Exit
+              Выход
             </button>
           </div>
         </div>
         <span className="profileLogin">{login}</span>
-        <div className="profileMoreInfo" isseller={iAmSeller + ""}>
+        <div className="profileMoreInfo">
           <div className="profileMoreInfoDiv">
-            {!iAmSeller && <div className="profMoreInfoBlock">
-              <span className="profInfoHeader">Birthday</span>
-              <span className="profInfoContent">{birthDay}</span>
-            </div>}
             <div
-              className={`profMoreInfoBlock ${!iAmSeller && "profMoreInfoBlock2"} ${iAmSeller ? "profMobileHiddenBlock1" : "profMobileHiddenBlock2"}`}
-              isseller={iAmSeller + ""}
-              active={!mobileInfoHidden + ""}
+              className={`profMoreInfoBlock profMoreInfoBlock2 profMobileHiddenBlock2`}
+              // isseller={iAmSeller + ""}
+              // active={!mobileInfoHidden + ""}
             >
               <span className="profInfoHeader">E-mail</span>
               <span className="profInfoContent">{email}</span>
-              <label className="profEmailHowLogin">
+              {/* <label className="profEmailHowLogin">
                 <input type="checkbox" />
                 <span>Use how login</span>
-              </label>
+              </label> */}
             </div>
           </div>
           <div className="profileMoreInfoDiv">
-            {!iAmSeller && <div className="profMoreInfoBlock">
-              <span className="profInfoHeader">Country</span>
-              <span className="profInfoContent">{location}</span>
-            </div>}
             <div
-              className={`profMoreInfoBlock ${!iAmSeller && "profMoreInfoBlock2"} ${iAmSeller ? "profMobileHiddenBlock2" : "profMobileHiddenBlock1"}`}
-              isseller={iAmSeller + ""}
-              active={!mobileInfoHidden + ""}
+              className={`profMoreInfoBlock profMoreInfoBlock2 profMobileHiddenBlock2`}
+              // isseller={iAmSeller + ""}
+              // active={!mobileInfoHidden + ""}
             >
-              <span className="profInfoHeader">Mobile number</span>
+              <span className="profInfoHeader">Ваш адрес</span>
+              <span className="profInfoContent">{address}</span>
+              {/* <label className="profEmailHowLogin">
+                <input type="checkbox" />
+                <span>Use how login</span>
+              </label> */}
+            </div>
+          </div>
+          <div className="profileMoreInfoDiv">
+            
+            <div
+              className={`profMoreInfoBlock profMoreInfoBlock2 profMobileHiddenBlock1`}
+              // isseller={iAmSeller + ""}
+              // active={!mobileInfoHidden + ""}
+            >
+              <span className="profInfoHeader">Номер телефона</span>
               <span className="profInfoContent">{phoneNumber}</span>
             </div>
           </div>
           <div
             className="profileMoreInfoDiv passwordContentDiv"
-            isseller={iAmSeller + ""}
-            active={!mobileInfoHidden + ""}
+            // isseller={iAmSeller + ""}
+            // active={!mobileInfoHidden + ""}
           >
-            <span className="profInfoHeader">Password</span>
+            <span className="profInfoHeader">Пароль</span>
             <input className="passwordText" readOnly value="* * * * * * *" />
-            <button className="profChangePassButton">Change your Password</button>
+            <button className="profChangePassButton">Изменить пароль</button>
           </div>
         </div>
       </div>
