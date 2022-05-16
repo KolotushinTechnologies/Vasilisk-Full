@@ -15,7 +15,7 @@ app.use(express.static("public"));
 // Define Routes
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
-app.use("/api/seller-card", require("./routes/api/sellerCard"));
+app.use("/api/product-card", require("./routes/api/productCard"));
 app.use("/api/order", require("./routes/api/order"));
 app.use("/api/carpets", require("./routes/api/carpet"));
 
